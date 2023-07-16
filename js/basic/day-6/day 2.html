@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    button:active {
+      opacity: 0.8;
+    }
+    .project-1 {
+      display: flex;
+      flex-direction: column;
+      width: 35rem;
+      height: 15rem;
+      border: 1px solid red;
+      text-align: center;
+      gap: 20px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      border: 1px solid gray;
+      padding: 10px;
+    }
+    .click-me {
+      cursor: pointer;
+      height: 35px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(to left top, orange, red, yellow);
+      box-shadow: -1px 0.2px 2px rgba(1, 79, 156, 0.865),
+        2px 2px 4px rgba(10, 22, 251, 0.548);
+      color: whitesmoke;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    .reset {
+      cursor: pointer;
+      height: 35px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(
+        to left top,
+        rgba(28, 0, 189, 0.733),
+        rgba(0, 229, 255, 0.861),
+        rgba(71, 23, 176, 0.712)
+      );
+      box-shadow: -1px 0.2px 2px rgba(1, 79, 156, 0.865),
+        2px 2px 4px rgba(10, 22, 251, 0.548);
+      color: whitesmoke;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    .reset:hover {
+      background: linear-gradient(to left top, orange, red, yellow);
+    }
+    .click-me:hover {
+      background: linear-gradient(
+        to left top,
+        rgba(28, 0, 189, 0.733),
+        rgba(0, 229, 255, 0.861),
+        rgba(71, 23, 176, 0.712)
+      );
+    }
+    .cool-input {
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+      font-size: 16px;
+      padding: 5px 0;
+      transition: border-color 0.3s ease;
+    }
+
+    .cool-input:focus {
+      border-color: #6c63ff;
+    }
+
+    .cool-input::placeholder {
+      color: #999;
+      transition: color 0.3s ease;
+    }
+
+    .cool-input:focus::placeholder {
+      color: #ccc;
+    }
+
+    .output {
+      margin: 0px;
+    }
+    /*project 2*/
+    .project-2 {
+      width: 35rem;
+      height: auto;
+      position: relative;
+      border: 0.4px solid red;
+      margin: 0 auto;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .image-generator {
+      display: flex;
+      border: 1px solid orangered;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 10px;
+      justify-content: space-around;
+    }
+    .image-generator img {
+      width: 70px;
+      height: 50px;
+      padding: 10px;
+    }
+    .btn-btn-succees {
+      cursor: pointer;
+      height: 35px;
+      width: 10rem;
+      border-radius: 10px;
+      border: none;
+      margin-top: 0;
+      background: linear-gradient(
+        to left top,
+        rgba(11, 139, 102, 0.733),
+        rgba(2, 189, 67, 0.861),
+        rgba(62, 171, 4, 0.712)
+      );
+      box-shadow: inset -1px 0.2px 5px rgba(144, 229, 7, 0.187),
+        inset 2px 2px 5px rgba(133, 235, 8, 0.548);
+      color: whitesmoke;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    /*project 3*/
+    .project-3 {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 35rem;
+      height: 15rem;
+      border: 1px solid red;
+    }
+    .container-content {
+      display: flex;
+      align-items: center;
+      width: 30rem;
+      height: 7rem;
+      border: 2px solid red;
+      justify-content: space-around;
+    }
+    .container-content .box-content {
+      width: 100px;
+      height: 90%;
+      cursor: pointer;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.4s;
+    }
+    .box-content:hover {
+      box-shadow: -5px -4px 10px rgba(19, 19, 160, 0.384),
+        5px 7px 9px rgba(0, 166, 195, 0.703);
+    }
+    .box-content img {
+      width: 90px;
+      height: 90px;
+    }
+    .game-restult {
+      color: red;
+    }
+    .player {
+      box-shadow: -5px -4px 10px rgba(17, 224, 239, 0.384),
+        5px 7px 9px rgba(0, 166, 195, 0.703);
+    }
+    .computer {
+      box-shadow: 5px -4px 10px rgba(168, 26, 1, 0.626),
+        5px 7px 9px rgba(95, 9, 1, 0.703);
+    }
+  </style>
+  <body>
+    <div class="project-1">
+      <h1>Challange 1: Your age in day</h1>
+      <input class="cool-input" type="text" placeholder="input your age" />
+      <div class="buttons">
+        <button class="click-me">Click me</button>
+        <button class="reset">reset</button>
+      </div>
+    </div>
+    <h1 class="output"></h1>
+
+    <!-- project 2 -->
+    <h2>Challange 2:Cat Generator</h2>
+    <div class="project-2">
+      <button class="btn-btn-succees" id="cat-generator">generate cat</button>
+      <div class="image-generator"></div>
+    </div>
+
+    <!-- Project3 -->
+    <div class="project-3">
+      <h1>Challange 3: rock,paper,scissor</h1>
+      <div class="container-content">
+        <button class="box-content" value="rock">
+          <img src="img/rock.png" alt="" />
+        </button>
+        <button class="box-content" value="paper">
+          <img src="img/paper.png" alt="" />
+        </button>
+        <button class="box-content" value="scissor">
+          <img src="img/scissor.png" alt="" />
+        </button>
+      </div>
+    </div>
+    <script>
+      //project1
+      const inputAge = document.querySelector(".cool-input");
+      const clickBtn = document.querySelector(".click-me");
+      const reset = document.querySelector(".reset");
+      const displayOutput = document.querySelector(".output");
+
+      function changeAge() {
+        let result = Number(inputAge.value) * 365;
+        return result + " day";
+      }
+      function resetcontent() {
+        displayOutput.textContent = " ";
+        inputAge.value = "";
+        inputAge.placeholder = "Input your age";
+      }
+      reset.onclick = () => {
+        resetcontent();
+      };
+      clickBtn.onclick = () => {
+        displayOutput.textContent = changeAge();
+      };
+
+      //project2
+      const btnGenerator = document.getElementById("cat-generator");
+      function generatorImage() {
+        let image = document.createElement("img");
+        const div = document.querySelector(".image-generator");
+        image.src = "img/rock.png";
+        div.appendChild(image);
+      }
+      btnGenerator.onclick = () => {
+        generatorImage();
+      };
+
+      //project3
+      const arrayGames = ["rock", "paper", "scissor"];
+      const containerContent = document.querySelector(".container-content");
+      const playgames = document.querySelectorAll(".box-content");
+      let player;
+      let hasilGame;
+      let computer;
+
+      let h1;
+
+      function games() {
+        if (!h1) {
+          h1 = document.createElement("h1");
+          h1.style.textAlign = "center";
+        }
+        if (player == "rock") {
+          if (computer == "rock") {
+            return { hasilGame: "player draw", color: "yellow" };
+          } else if (computer == "paper") {
+            return { hasilGame: "player lose", color: "red" };
+          } else {
+            return { hasilGame: "player win", color: "orange" };
+          }
+        } else if (player == "paper") {
+          if (computer == "paper") {
+            return { hasilGame: "player draw", color: "yellow" };
+          } else if (computer == "scissor") {
+            return { hasilGame: "player lose", color: "red" };
+          } else {
+            return { hasilGame: "player win", color: "orange" };
+          }
+        } else {
+          if (computer == "scissor") {
+            return { hasilGame: "player draw", color: "yellow" };
+          } else if (computer == "rock") {
+            return { hasilGame: "player lose", color: "red" };
+          } else {
+            return { hasilGame: "player win", color: "orange" };
+          }
+        }
+      }
+
+      playgames.forEach((play) => {
+        play.onclick = () => {
+          player = play.value;
+          let acak = Math.floor(Math.random() * arrayGames.length);
+          computer = arrayGames[acak];
+          containerContent.innerHTML = " ";
+          const value = play.getAttribute("value");
+          let message = games();
+          if (value) {
+            containerContent.innerHTML = `<button class="box-content  player" value="${computer}"><img  src="img/${player}.png" alt="" /></button>
+            ${message.hasilGame}
+            <button class="box-content computer" value="${player}"><img  src="img/${computer}.png" alt="" /></button>`;
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

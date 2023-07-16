@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .calculator {
+        width: 20rem;
+        height: 20rem;
+        background-color: darkmagenta;
+        display: grid;
+        grid-template-rows: 0.8fr 1fr 0.2fr;
+        border-radius: 2.2rem;
+        padding: 10px;
+      }
+      .display {
+        font-size: 25px;
+        color: aliceblue;
+        padding: 10px;
+      }
+      .buttons {
+        border-top: 1px solid aliceblue;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        align-items: center;
+        place-items: center;
+      }
+      button {
+        color: cyan;
+        font-size: 25px;
+        background-color: darkblue;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .operators {
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="displays">
+        <h1 class="display"></h1>
+        <h2 class="sum"></h2>
+      </div>
+      <div class="buttons">
+        <button class="number" value="1">1</button>
+        <button class="number" value="2">2</button>
+        <button class="number" value="3">3</button>
+        <button class="number" value="4">4</button>
+        <button class="number" value="5">5</button>
+        <button class="number" value="6">6</button>
+        <button class="number" value="7">7</button>
+        <button class="number" value="8">8</button>
+        <button class="number" value="9">9</button>
+        <button class="number" value="0">0</button>
+      </div>
+      <div class="operators">
+        <button class="operator" value="+">+</button>
+        <button class="operator" value="-">-</button>
+        <button class="operator" value="/">/</button>
+        <button class="operator" value="*">x</button>
+        <button class="equal">=</button>
+      </div>
+    </div>
+
+    <script>
+      const numbers = document.querySelectorAll(".number");
+      const operators = document.querySelectorAll(".operator");
+      const display = document.querySelector(".display");
+      const display2 = document.querySelector(".sum");
+      let result = document.querySelector(".equal");
+      let tool;
+      let firstNumber = 0;
+      let secondNumber = 0;
+
+      numbers.forEach((number) => {
+        number.onclick = () => {
+          display.textContent += number.value;
+          let indexs = display.textContent.indexOf(tool);
+          firstNumber = Number(display.textContent.slice(0, indexs));
+          secondNumber = Number(
+            display.textContent.slice(indexs + 1, display.textContent.length)
+          );
+        };
+      });
+      operators.forEach((operator) => {
+        operator.onclick = () => {
+          display.textContent += operator.value;
+          if (operator.value == "+") {
+            tool = "+";
+            if (secondNumber == 0) {
+              display2.textContent = firstNumber;
+            } else {
+              sumNumber = firstNumber + secondNumber;
+              display2.textContent = firstNumber + secondNumber;
+            }
+          } else if (operator.value == "-") {
+            tool = "-";
+            if (secondNumber == 0) {
+              display2.textContent = firstNumber;
+            } else {
+              display2.textContent = firstNumber - secondNumber;
+            }
+          } else if (operator.value == "/") {
+            tool = "/";
+            if (secondNumber == 0) {
+              display2.textContent = firstNumber;
+            } else {
+              display2.textContent = firstNumber / secondNumber;
+            }
+          } else {
+            tool = "*";
+            if (secondNumber == 0) {
+              display2.textContent = firstNumber;
+            } else {
+              display2.textContent = firstNumber * secondNumber;
+            }
+          }
+        };
+      });
+
+      result.onclick = () => {
+        if (tool == "+") {
+          display.textContent = firstNumber + secondNumber;
+          display2.style.display = "none";
+          secondNumber = 0;
+        } else if (tool == "-") {
+          display.textContent = firstNumber - secondNumber;
+          display2.style.display = "none";
+          secondNumber = 0;
+        } else if (tool == "/") {
+          display.textContent = firstNumber / secondNumber;
+          display2.style.display = "none";
+          secondNumber = 0;
+        } else {
+          display.textContent = firstNumber * secondNumber;
+          display2.style.display = "none";
+          secondNumber = 0;
+        }
+      };
+    </script>
+  </body>
+</html>

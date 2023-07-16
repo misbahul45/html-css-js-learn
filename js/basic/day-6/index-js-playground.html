@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*
+      body {
+        height: 100vh;
+        background: linear-gradient(to left top, red, orangered);
+        background-repeat: no-repeat;
+      }
+      .hp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20rem;
+        height: 30rem;
+        background: rgb(29, 13, 211);
+        border: 20px solid aliceblue;
+        border-radius: 50px;
+        padding: 10px;
+      }
+      #increment,
+      #decrement {
+        width: 90px;
+        height: 30px;
+        padding: 5px;
+        color: whitesmoke;
+        background: linear-gradient(to right, red, orange);
+        font-weight: 700;
+        background-color: aliceblue;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+      }
+      #save {
+        margin-top: 10px;
+      }
+      .store {
+        width: 16rem;
+        height: auto;
+        background-color: white;
+        display: grid;
+        grid-template-rows: 1fr 0.2fr 0.1fr 0.13fr;
+        justify-items: center;
+        align-items: center;
+        border-radius: 7px;
+        transition: all 0.3s;
+        text-align: center;
+      }
+      .store:hover {
+        scale: 1.01;
+      }
+      .store:hover .img-sepatu {
+        scale: 1.1;
+      }
+      .img-sepatu {
+        width: 170px;
+        height: 130px;
+        border-radius: 5px;
+        transition: all 0.5s;
+      }
+      .tittle-sepatu {
+        color: darkblue;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .store-btn {
+        width: 140px;
+        padding: 10px;
+        border-radius: 14px;
+        cursor: pointer;
+        background: linear-gradient(to left, darkblue, blue);
+        margin-top: 0px;
+        color: aliceblue;
+      }
+      .eror {
+        color: red;
+      }
+      .blackjack-game {
+        color: antiquewhite;
+        width: 20rem;
+        display: grid;
+        grid-template-rows: 0.5fr 0.2fr 0.2fr 0.2fr 0.3fr 0.4fr;
+        row-gap: 5px;
+        background-color: rgb(0, 97, 2);
+        padding: 15px;
+        border-radius: 7px;
+        text-align: center;
+        grid-template-areas:
+          "header"
+          "input"
+          "button";
+      }
+      .blackjack-game .input-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        display: none;
+      }
+      .input-card input {
+        width: 120px;
+        height: 20px;
+        border: 1px solid greenyellow;
+        border-radius: 10px;
+        padding: 2px 7px 2px 7px;
+        outline: none;
+        font-weight: 600;
+        color: blue;
+      }
+      .input-card input::placeholder {
+        color: rgb(7, 19, 147);
+      }
+      .blackjack-game h1 {
+        font-size: 30px;
+        color: rgb(202, 172, 1);
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .blackjack-game h2 {
+        font-size: 15px;
+      }
+      .blackjack-game button {
+        background-color: aquamarine;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        border-radius: 7px;
+        border: none;
+        padding: 7px;
+        color: rgb(4, 100, 28);
+        font-weight: 600;
+        font-variant-caps: all-petite-caps;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .blackjack-game button:hover {
+        border-radius: 0;
+        box-shadow: 1px 1px 1px darkgrey;
+      }
+      */
+
+      #message-el {
+        font-style: italic;
+      }
+
+      /* 3. Make sure that the two buttons have some space between
+each other when they are rendered out vertically */
+      button {
+        color: #016f32;
+        width: 150px;
+        background: goldenrod;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: bold;
+        border: none;
+        border-radius: 2px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="hp">
+      <h1>People Entered</h1>
+      <h2 id="count-el">0</h2>
+      <div class="button">
+        <button id="increment">increment</button>
+        <button id="decrement">decrement</button>
+      </div>
+      <div class="button">
+        <button id="save">Save</button>
+        <button id="reset">reset</button>
+      </div> 
+
+      <p id="displayed">Previous enter</p>
+    </div>-->
+
+    <!-- <div class="store">
+      <img src="image/seoatu.jpg" alt="" class="img-sepatu" />
+      <p class="tittle-sepatu">Nike Show</p>
+      <button class="store-btn">Purchese-$149</button>
+      <p class="eror"></p>
+    </div> -->
+    <!-- <div class="blackjack-game">
+      <h1 class="title">BlackJack</h1>
+      <div class="input-card">
+        <input
+          type="text"
+          placeholder=" First Card"
+          id="firstcard"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          placeholder="Second Card"
+          id="secondcard"
+          autocomplete="off"
+        />
+      </div>
+      <h2 class="info">-----------</h2>
+      <p id="card-info">Card :</p>
+      <p class="sum">Sum :</p>
+      <button class="start-game">Start Game</button>
+      <button class="new-card">New Card</button>
+      <p class="per">Per :</p> -->
+
+    <!-- <h1>Blackjack</h1>
+    <p id="message-el">Want to play a round?</p>
+    <p id=" cards-el">Cards:</p>
+    <p id="sum-el">Sum:</p>
+    <button onclick="startGame()">START GAME</button>
+    <button onclick="newCard()">NEW CARD</button>
+    <p class="player-el">per :</p> -->
+
+    <script>
+      /*
+      const count = document.getElementById("count-el");
+      const incrementBtn = document.getElementById("increment");
+      const decrementBtn = document.getElementById("decrement");
+      const saveBtn = document.getElementById("save");
+      const displayed = document.getElementById("displayed");
+      const resetBtn = document.getElementById("reset");
+      let People = 0;
+      let savedata = "";
+      const increment = () => {
+        People = People + 1;
+        return People;
+      };
+      const decrement = () => {
+        People -= 1;
+        return People;
+      };
+      const save = () => {
+        let countSave = People + " - ";
+        savedata += countSave;
+        return savedata;
+      };
+      const reset = () => {
+        savedata = "";
+        People = 0;
+        displayed.innerText = "previous enter";
+        count.textContent = People;
+      };
+
+      incrementBtn.onclick = () => {
+        count.innerText = increment();
+      };
+      decrementBtn.onclick = () => {
+        if (People == 0) {
+          alert("cannot decrement minus");
+          count.innerText = People;
+        } else {
+          count.innerText = decrement();
+        }
+      };
+      saveBtn.onclick = () => {
+        displayed.innerText = save();
+      };
+      resetBtn.onclick = () => {
+        reset();
+      };
+      */
+
+      /*
+      const storeBtn = document.querySelector(".store-btn");
+      const eror = document.querySelector(".eror");
+
+      storeBtn.onclick = () => {
+        eror.innerText = "Some thing went wrong,please try again";
+      };*/
+
+      /*
+      const blackjackGame = document.querySelector(".blackjack-game");
+      const infoGame = document.querySelector(".info");
+      const cardInfo = document.getElementById("card-info");
+      const displaySum = document.querySelector(".sum");
+      const inputCard = document.querySelector(".input-card");
+      const startGameBtn = document.querySelector(".start-game");
+      const newCardBtn = document.querySelector(".new-card");
+      const perMoney = document.querySelector(".per");
+      const firstCard = document.getElementById("firstcard");
+      const secondCard = document.getElementById("secondcard");
+
+      let sum;
+      function sumValue() {
+        let cardtext = Number(firstCard.value) + " " + Number(secondCard.value);
+        cardInfo.textContent += cardtext;
+        inputCard.style.display = "none";
+        sum = Number(firstCard.value) + Number(secondCard.value);
+        displaySum.textContent += sum;
+        if (sum < 21) {
+          infoGame.textContent = "Do you want to draw new card 🙏?";
+        } else if (sum == 21) {
+          infoGame.textContent = "You are win 😄";
+        } else {
+          infoGame.textContent = "You Lose, please try again 😢";
+        }
+      }
+
+      function newCard() {
+        inputCard.style.display = "block";
+        cardInfo.textContent = "Card : ";
+        infoGame.textContent = "--------------";
+        displaySum.textContent = "Sum :";
+        firstCard.value = "";
+        firstCard.placeholder = "First Card";
+        secondCard.value = "";
+        secondCard.placeholder = "Second Card";
+      }
+
+      newCardBtn.onclick = () => {
+        newCard();
+      };
+      startGameBtn.onclick = () => {
+        sumValue();
+      };
+      */
+      /*
+      let cards = [];
+      let sum = 0;
+      let hasBlackJack = false;
+      let isAlive = true;
+      let message = "";
+      let messageEl = document.getElementById("message-el");
+      let sumEl = document.getElementById("sum-el");
+      let cardsEl = document.getElementById("cards-el");
+      let playerEl = document.querySelector(".player-el");
+      let player = {
+        name: "Per",
+        chip: 200,
+        sayHelo: function () {
+          playerEl.textContent = this.name + " :$" + this.chip;
+        },
+      };
+
+      // Make this function return a random number between 1 and 13
+      function getRandomCard() {
+        let random = Math.round(Math.random() * 13);
+
+        if (random > 10) {
+          return 10;
+        } else if (random == 1) {
+          return 11;
+        } else {
+          return random;
+        }
+      }
+
+      function startGame() {
+        isAlive = true;
+        let firstCard = getRandomCard();
+        let secondCard = getRandomCard();
+        cards = [firstCard, secondCard];
+        sum = firstCard + secondCard;
+
+        renderGame();
+      }
+
+      function renderGame() {
+        cardsEl.textContent = "Cards: ";
+        for (let i = 0; i < cards.length; i++) {
+          cardsEl.textContent += cards[i] + " ";
+        }
+        player.sayHelo();
+        sumEl.textContent = "Sum: " + sum;
+        if (sum <= 20) {
+          message = "Do you want to draw a new card?";
+          player.chip -= 10;
+        } else if (sum === 21) {
+          message = "You've got Blackjack!";
+          hasBlackJack = true;
+          player.chip += 10;
+        } else {
+          message = "You're out of the game!";
+          isAlive = false;
+        }
+        messageEl.textContent = message;
+      }
+
+      function newCard() {
+        if (isAlive == true && hasBlackJack == false) {
+          let card = getRandomCard();
+          sum += card;
+          cards.push(card);
+          renderGame();
+        }
+      }
+      */
+    </script>
+  </body>
+</html>

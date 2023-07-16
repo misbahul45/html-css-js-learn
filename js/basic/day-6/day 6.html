@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .project-5 {
+        width: 40rem;
+        height: 30rem;
+        border: 2px solid red;
+        text-align: center;
+      }
+      .flex-blackjack-row-1 {
+        width: 100%;
+        height: 17rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .your-box {
+        background-color: rgba(4, 80, 4, 0.934);
+        border: 1px solid lightgreen;
+        color: white;
+      }
+      .dealer-box {
+        background-color: rgba(4, 80, 4, 0.934);
+        border: 1px solid lightgreen;
+        color: white;
+      }
+      .flex-blackjack-row-2 {
+        width: 100%;
+        height: 3.305rem;
+        background: cyan;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .flex-blackjack-row-2 button {
+        width: 80px;
+        border-radius: 10px;
+        border: none;
+        color: whitesmoke;
+        font-size: 12px;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .deal {
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 35%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      }
+      .hit {
+        background: rgb(36, 24, 0);
+        background: linear-gradient(
+          90deg,
+          rgba(36, 24, 0, 1) 0%,
+          rgba(121, 9, 24, 1) 38%,
+          rgba(255, 63, 0, 1) 100%
+        );
+      }
+      .stand {
+        background: rgb(5, 127, 224);
+        background: linear-gradient(
+          90deg,
+          rgba(5, 127, 224, 1) 19%,
+          rgba(0, 115, 177, 0.79) 45%,
+          rgba(7, 229, 223, 1) 64%
+        );
+      }
+      .flex-blackjack-row-3 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <p class="demo">hallo</p> -->
+    <div class="project-5">
+      <h2>Challange 5:blackJack</h2>
+      <h3><span id="blackjack-result">Let's Play</span></h3>
+      <div class="flex-blackjack-row-1">
+        <div class="your-box">
+          <h2>You: <span id="Your-blackjack-result">0</span></h2>
+        </div>
+        <div class="dealer-box">
+          <h2>Dealer: <span id="delaer-blackjack-result">0</span></h2>
+        </div>
+      </div>
+
+      <div class="flex-blackjack-row-2">
+        <div class="container-row">
+          <button class="hit">Hit</button>
+          <button class="stand">Stand</button>
+          <button class="deal">Deal</button>
+        </div>
+      </div>
+      <div class="flex-blackjack-row-3">
+        <table style="border: 1px solid black">
+          <tr>
+            <th>Wins</th>
+            <th>Loses</th>
+            <th>Draw</th>
+          </tr>
+          <tr>
+            <td id="wins">0</td>
+            <td id="loses">0</td>
+            <td id="draw">0</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      /* const cars = ["toyota", "lambo", "almaz"];
+      cars.forEach((item, index, array) => {
+        console.log(item, index);
+      });*/
+    </script>
+  </body>
+</html>

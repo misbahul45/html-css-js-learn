@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .project-4 {
+        padding: 2rem;
+        border: 1px solid red;
+        background: linear-gradient(to left, red, orange);
+        border-radius: 20px;
+      }
+      .flex-bock-pick-color {
+        width: 30rem;
+        height: 5rem;
+        border: 2px solid orangered;
+        border-radius: 10px;
+        background: linear-gradient(
+          rgba(197, 188, 188, 0.516),
+          rgba(148, 115, 115, 0.447)
+        );
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 5px rgba(13, 13, 139, 0.422);
+        padding: 10px;
+      }
+      button {
+        width: 80px;
+        height: 30px;
+        border-radius: 9px;
+        cursor: pointer;
+        font-size: 15px;
+        color: aliceblue;
+        font-weight: 700;
+        border: 1px solid rgba(134, 38, 38, 0.491);
+        box-shadow: 2px 3px 7px rgba(3, 132, 188, 0.564);
+        transition: all 0.5s;
+      }
+
+      button:active {
+        box-shadow: inset 2px 3px 7px rgba(3, 132, 188, 0.564);
+      }
+      select {
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        font-weight: 700;
+        color: whitesmoke;
+        background-color: rgba(7, 214, 214, 0.929);
+        border-radius: 9px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+      .btn-primary {
+        background-color: blue;
+      }
+      .btn-danger {
+        background-color: red;
+      }
+      .btn-warning {
+        background-color: yellow;
+      }
+      .btn-succes {
+        background-color: green;
+      }
+      .btn-reset {
+        background: linear-gradient(to left, rgb(18, 33, 203), orange);
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="change-my-color">Challange 4: channge the color of all button</h2>
+    <div class="project-4">
+      <div class="flex-bock-pick-color">
+        <form action="">
+          <select
+            class="select-button"
+            name="backdrop"
+            id="background"
+            onchange="buttonColorChange(this)"
+          >
+            <option value="random">random</option>
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="reset">reset</option>
+          </select>
+        </form>
+        <button class="btn btn-primary">Wee!</button>
+        <button class="btn btn-danger">Yahoo!</button>
+        <button class="btn btn-warning">Google!</button>
+        <button class="btn btn-succes">Facebook!</button>
+      </div>
+    </div>
+
+    <script>
+      const all_button = document.getElementsByTagName("button");
+      const selectButton = document.querySelector(".select-button");
+      console.log(all_button);
+      let copyAllButtons = [];
+      for (let x = 0; x < all_button.length; x++) {
+        copyAllButtons.push(all_button[x]);
+      }
+      console.log(copyAllButtons);
+
+      function buttonColorChange(buttonThingy) {
+        if (buttonThingy.value == "red") {
+          buttonRed();
+        } else if (buttonThingy.value == "green") {
+          buttonGreen();
+        } else if (buttonThingy.value == "reset") {
+          buttonColorReset();
+        } else {
+          randomColors();
+        }
+      }
+
+      function buttonRed() {
+        for (i in copyAllButtons) {
+          all_button[i].classList.remove(all_button[i].classList[1]);
+          all_button[i].classList.add("btn-danger");
+        }
+        selectButton.classList.remove(selectButton.classList[0]);
+        selectButton.classList.add("btn-danger");
+      }
+      function buttonGreen() {
+        for (i in copyAllButtons) {
+          all_button[i].classList.remove(all_button[i].classList[1]);
+          all_button[i].classList.add("btn-succes");
+        }
+        selectButton.classList.remove(selectButton.classList[0]);
+        selectButton.classList.add("btn-succes");
+      }
+      function buttonColorReset() {
+        for (i in copyAllButtons) {
+          all_button[i].classList.remove(all_button[i].classList[1]);
+          all_button[i].classList.add(copyAllButtons[i]);
+        }
+      }
+      function randomColors() {
+        let choices = [
+          "btn-primary",
+          "btn-danger",
+          "btn-succes",
+          "btn-warning",
+        ];
+        const random = Math.floor(Math.random() * choices.length);
+        for (i in copyAllButtons) {
+          all_button[i].classList.remove(all_button[i].classList[1]);
+          all_button[i].classList.add(choices[random]);
+        }
+        selectButton.classList.add(choices[random]);
+      }
+    </script>
+  </body>
+</html>

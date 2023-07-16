@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha384-XXXXXX"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, red, rgb(232, 74, 1));
+      }
+      .calculator {
+        width: 18rem;
+        height: 35rem;
+        background: linear-gradient(
+          rgba(31, 29, 29, 0.326),
+          rgba(25, 22, 22, 0.231)
+        );
+        display: grid;
+        grid-template-rows: 0.6fr 0.2fr 1.5fr;
+        row-gap: 5px;
+        border-radius: 10px;
+        backdrop-filter: blur(1rem);
+        box-shadow: 2px 2px 0px #58c704a0, -2px -2px 6px #8e360371;
+      }
+      .display {
+        box-sizing: border-box;
+        text-align: right;
+        padding: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .display-text {
+        color: aliceblue;
+      }
+      .display-sum {
+        color: aliceblue;
+      }
+      .tool {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        align-items: center;
+        border-bottom: 1px solid rgb(255, 255, 255);
+      }
+      .tool-item {
+        display: flex;
+        gap: 8px;
+      }
+      .tool-item i {
+        color: aliceblue;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tool-item i:hover {
+        background-color: rgba(240, 248, 255, 0.537);
+      }
+      .tool-delete i {
+        color: aqua;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tool-delete i:hover {
+        background-color: rgba(240, 248, 255, 0.324);
+      }
+      .numbers {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+        padding: 10px;
+      }
+      .numbers button {
+        width: 60px;
+        height: 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.2s;
+        font-size: 20px;
+      }
+      .numbers .number {
+        background-color: rgba(0, 0, 0, 0.466);
+        font-weight: 600;
+        color: aliceblue;
+      }
+      .numbers .number:hover,
+      .icon:hover,
+      .cButton:hover {
+        background-color: rgba(0, 0, 0, 0.21);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.158);
+      }
+      .icon {
+        background-color: rgba(0, 0, 0, 0.466);
+        color: rgb(2, 183, 2);
+        font-weight: 650;
+      }
+      .cButton {
+        background-color: rgba(0, 0, 0, 0.466);
+        color: orangered;
+        font-weight: 700;
+      }
+      .plusminus {
+        background-color: rgba(0, 0, 0, 0.466);
+        color: whitesmoke;
+        font-weight: 600;
+      }
+      .equal {
+        font-weight: 900;
+        color: aliceblue;
+        background-color: rgb(9, 151, 9);
+      }
+      .equal:hover {
+        background-color: rgba(81, 253, 7, 0.852);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <h1 class="display-text"></h1>
+        <h2 class="display-sum"></h2>
+      </div>
+      <div class="tool">
+        <div class="tool-item">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <i class="fas fa-ruler"></i>
+          <i class="fas fa-calculator"></i>
+        </div>
+        <div class="tool-delete">
+          <i class="fas fa-backspace"></i>
+        </div>
+      </div>
+
+      <div class="numbers">
+        <button class="cButton">C</button>
+        <button class="icon">( )</button>
+        <button class="icon">%</button>
+        <button class="icon" id="divided">/</button>
+        <button class="number" value="7">7</button>
+        <button class="number" value="8">8</button>
+        <button class="number" value="9">9</button>
+        <button class="icon x" id="multiply">X</button>
+        <button class="number" value="4">4</button>
+        <button class="number" value="5">5</button>
+        <button class="number" value="6">6</button>
+        <button class="icon" id="minus">-</button>
+        <button class="number" value="1">1</button>
+        <button class="number" value="2">2</button>
+        <button class="number" value="3">3</button>
+        <button class="icon" id="plus">+</button>
+        <button class="plusminus">+/-</button>
+        <button class="number" value="0">0</button>
+        <button class="tool icon">,</button>
+        <button class="equal">=</button>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/6bf40bc6b5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const numbers = document.querySelectorAll(".number");
+      const plus = document.getElementById("plus");
+      const minus = document.getElementById("minus");
+      const multiply = document.getElementById("multiply");
+      const divide = document.getElementById("divided");
+      const equal = document.querySelector(".equal");
+      let displayNumber = document.querySelector(".display-text");
+      const displaySum = document.querySelector(".display-sum");
+      let tool = " ";
+      let firstNumber;
+      let secondNumber;
+      let isSecondNumber = false;
+      let isequalclick = false;
+      let result;
+      function plusNumber() {
+        result = firstNumber + secondNumber;
+        return result;
+      }
+      function minusNumber() {
+        result = firstNumber - secondNumber;
+        return result;
+      }
+      function multiplyNumber() {
+        result = firstNumber * secondNumber;
+
+        return result;
+      }
+      function divideNumber() {
+        result = firstNumber / secondNumber;
+        return result;
+      }
+
+      numbers.forEach((number) => {
+        number.onclick = () => {
+          displayNumber.textContent += number.value;
+          if (tool == " ") {
+            firstNumber = Number(displayNumber.textContent);
+          } else {
+            const displayText = displayNumber.textContent;
+            const operatorIndex = displayText.indexOf(tool) + tool.length;
+            secondNumber = Number(displayText.slice(operatorIndex));
+          }
+        };
+      });
+
+      plus.onclick = () => {
+        displayNumber.textContent += " + ";
+        tool = "+";
+      };
+      minus.onclick = () => {
+        displayNumber.textContent += " - ";
+        tool = "-";
+      };
+      multiply.onclick = () => {
+        displayNumber.textContent += " x ";
+        tool = "x";
+      };
+      divide.onclick = () => {
+        displayNumber.textContent += " / ";
+        tool = "/";
+      };
+
+      equal.onclick = () => {
+        if (tool == "+") {
+          displayNumber.textContent = plusNumber();
+        } else if (tool == "-") {
+          displayNumber.textContent = minusNumber();
+        } else if (tool == "x") {
+          displayNumber.textContent = multiplyNumber();
+        } else if (tool == "/") {
+          displayNumber.textContent = divideNumber();
+        }
+
+        firstNumber = Number(displayNumber.textContent);
+        console.log(firstNumber);
+      };
+    </script>
+  </body>
+</html>

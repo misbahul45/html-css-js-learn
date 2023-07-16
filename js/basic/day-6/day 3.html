@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .flexbox-container {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        width: 30rem;
+        height: 7rem;
+        border: 2px solid red;
+        justify-content: space-around;
+        border-radius: 7px;
+      }
+      .flexbox-container img {
+        width: 100px;
+        height: 100px;
+        transition: all 0.5s;
+        cursor: pointer;
+        border: 1px solid gray;
+      }
+      img:hover {
+        box-shadow: -4px -4px 8px rgba(3, 109, 144, 0.42),
+          5px 5px 9px rgba(4, 140, 198, 0.699);
+      }
+      .content {
+        border: 2px solid green;
+        padding: 20px;
+        border-radius: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Rock -> Paper -> Scissor</h1>
+      <div class="flexbox-container">
+        <img
+          src="../../js/basic/img/rock.png"
+          id="rock"
+          alt=""
+          onclick="rpsGame(this)"
+        />
+        <img
+          src="../../js/basic/img/paper.png"
+          id="paper"
+          alt=""
+          onclick="rpsGame(this)"
+        />
+        <img
+          src="../../js/basic/img/scissor.png"
+          id="scissor"
+          alt=""
+          onclick="rpsGame(this)"
+        />
+      </div>
+    </div>
+
+    <script>
+      function rpsGame(yourChoice) {
+        let humanChoice, botChoice;
+        humanChoice = yourChoice.id;
+        botChoice = numberToChoice(randToRpsInt());
+
+        results = decideWinner(humanChoice, botChoice);
+        message = finalMessage(results);
+        rpsFrontEnd(yourChoice.id, botChoice, message);
+
+        console.log(humanChoice);
+      }
+
+      function randToRpsInt() {
+        return Math.floor(Math.random() * 3);
+      }
+
+      function numberToChoice(number) {
+        return ["rock", "paper", "scissor"][number];
+      }
+
+      function decideWinner(yourChoice, computerChoice) {
+        const rpsFatabase = {
+          rock: { scissor: 1, rock: 0.5, paper: 0 },
+          paper: { rock: 1, paper: 0.5, scissor: 0 },
+          scissor: { paper: 1, scissor: 0.5, rock: 0 },
+        };
+        let yourScore = rpsFatabase[yourChoice][computerChoice];
+        let computerScore = rpsFatabase[computerChoice][yourChoice];
+
+        return [yourScore, computerScore];
+      }
+
+      function finalMessage(message) {
+        let yourScore = message[0];
+        if (yourScore == 0) {
+          return { message: "You Lost!", color: "red" };
+        } else if (yourScore == 0.5) {
+          return { message: "you tied", color: "yellow" };
+        } else {
+          return { message: "You Won!", color: "green" };
+        }
+      }
+
+      function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
+        const imageDatabase = {
+          rock: document.getElementById("rock").src,
+          paper: document.getElementById("paper").src,
+          scissor: document.getElementById("scissor").src,
+        };
+        document.getElementById("rock").remove();
+        document.getElementById("paper").remove();
+        document.getElementById("scissor").remove();
+
+        let humanDiv = document.createElement("div");
+        let botDiv = document.createElement("div");
+        let messageDiv = document.createElement("div");
+
+        humanDiv.innerHTML =
+          "<img src='" +
+          imageDatabase[humanImageChoice] +
+          "' height=150 width=150 style='box-shadow: -4px -4px 8px rgba(3, 109, 144, 0.9);'>";
+
+        botDiv.innerHTML =
+          "<img src='" +
+          imageDatabase[botImageChoice] +
+          "' height=150 width=150 style='box-shadow: -4px -4px 8px rgba(194, 24, 24, 0.801);'>";
+
+        messageDiv.innerHTML =
+          "<h1 style='color:" +
+          finalMessage["color"] +
+          "; font-size:25px; padding:20px;'>" +
+          finalMessage["message"] +
+          "</h1>";
+
+        document.querySelector(".flexbox-container").appendChild(humanDiv);
+        document.querySelector(".flexbox-container").appendChild(messageDiv);
+        document.querySelector(".flexbox-container").appendChild(botDiv);
+      }
+    </script>
+  </body>
+</html>

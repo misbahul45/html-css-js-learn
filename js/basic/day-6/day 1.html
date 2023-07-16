@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 70px;
+      }
+      .container {
+        margin-top: 20px;
+        width: 20rem;
+        height: 10rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: baseline;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        z-index: -1;
+      }
+      p {
+        margin: 0;
+        line-height: 20px;
+        z-index: 2;
+        color: darkcyan;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      button {
+        margin-top: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../../image/seoatu.jpg" alt="" />
+      <p class="name">Name</p>
+      <p class="age">Age</p>
+      <p class="school">school from</p>
+    </div>
+    <button class="click">change name</button>
+    <!-- <div class="display"></div>
+    <h1 class="output">------</h1>
+    <h1 class="output2">-----</h1> -->
+    <script>
+      //first day of my jurnal life
+      console.log("This is my levelling up");
+
+      //->variable
+      /*
+        var myname = "Misbahul Muttaqin";
+        var myAge = 18;
+        alert(`My name is ${myname} and my age is ${myAge}`);
+        */
+      /*
+        const display = document.querySelector(".display");
+        const output = document.querySelector(".output");
+        const output2 = document.querySelector(".output2");
+
+        let num1 = 53491000000;
+        let num2 = 4359009;
+        let operator = "-";
+
+        display.textContent = num1 + operator + num2;
+        const indeks = display.textContent.indexOf(operator);
+        const length = display.textContent.length;
+
+        output.textContent = display.textContent.slice(0, indeks);
+        output2.textContent = display.textContent.slice(indeks + 1, length);
+
+        let myName = "misbahul muttaqin";*/
+      const name = document.querySelector(".name");
+      const age = document.querySelector(".age");
+      const school = document.querySelector(".school");
+      const click = document.querySelector(".click");
+      let student = `[
+        {
+          "name": "John Doe",
+          "age": 18,
+          "school": "XYZ High School"
+        },
+        {
+          "name": "Jane Smith",
+          "age": 17,
+          "school": "ABC High School"
+        }
+      ]`;
+
+      click.onclick = () => {
+        name.textContent += " " + JSON.parse(student)[0].name;
+        age.textContent += " " + JSON.parse(student)[0].age;
+        school.textContent += " " + JSON.parse(student)[0].school;
+      };
+    </script>
+  </body>
+</html>
