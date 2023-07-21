@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evaluasi Perkembangan Kesuksesan</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #a4d6e8; /* Warna latar belakang lebih cerah dengan nuansa aqua */
+        color: #222; /* Warna teks lebih gelap */
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff; /* Warna kotak formulir tetap putih */
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan lebih ringan */
+      }
+
+      h1 {
+        text-align: center;
+        color: #0ca3ba; /* Warna teks judul menjadi aqua yang lebih terang */
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      label {
+        margin-bottom: 5px;
+        color: #0ca3ba; /* Warna teks label menjadi aqua yang lebih terang */
+      }
+
+      input {
+        margin-bottom: 10px;
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        background-color: #f0f8ff; /* Warna latar input menjadi cerah */
+        color: #0ca3ba; /* Warna teks input menjadi aqua yang lebih terang */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Efek bayangan pada input */
+      }
+
+      button {
+        padding: 8px 16px;
+        background-color: #0ca3ba; /* Warna tombol menjadi aqua yang lebih terang */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Efek bayangan pada tombol */
+      }
+
+      button:hover {
+        background-color: #0a8c9a; /* Warna tombol saat dihover menjadi aqua yang lebih gelap */
+      }
+
+      #result {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #0ca3ba; /* Warna garis border div result menjadi aqua yang lebih terang */
+        border-radius: 4px;
+        background-color: #f0f8ff; /* Warna latar div result menjadi cerah */
+        color: #0ca3ba; /* Warna teks div result menjadi aqua yang lebih terang */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Efek bayangan pada div result */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Evaluasi Perkembangan Kesuksesan</h1>
+      <form id="evaluationForm">
+        <label for="usaha">Usaha (Skala 1-100):</label>
+        <input type="number" id="usaha" min="1" max="100" required /><br />
+
+        <label for="belajar">Belajar (Skala 1-100):</label>
+        <input type="number" id="belajar" min="1" max="100" required /><br />
+
+        <label for="workout">Workout (Skala 1-100):</label>
+        <input type="number" id="workout" min="1" max="100" required /><br />
+
+        <label for="doa">Doa (Skala 1-100):</label>
+        <input type="number" id="doa" min="1" max="100" required /><br />
+
+        <button type="button" onclick="evaluateSuccess()">Evaluasi</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <script>
+      function evaluateSuccess() {
+        const usaha = parseInt(document.getElementById("usaha").value);
+        const belajar = parseInt(document.getElementById("belajar").value);
+        const workout = parseInt(document.getElementById("workout").value);
+        const doa = parseInt(document.getElementById("doa").value);
+
+        // ... (sama seperti kode sebelumnya untuk perhitungan)
+
+        // Menampilkan hasil dan pesan
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+              <p>Hasil evaluasi perkembangan kesuksesan:</p>
+              <p>Kesuksesan Awal: ${kesuksesanAwal}</p>
+              <p>Usaha: ${usaha}</p>
+              <p>Belajar: ${belajar}</p>
+              <p>Workout: ${workout}</p>
+              <p>Doa dan Bergantung pada Allah: ${doa}</p>
+              <p>Total Skor Perkembangan: ${totalSkor.toFixed(2)}</p>
+              <p>Kesuksesan Akhir: ${kesuksesanAkhir.toFixed(2)}</p>
+              <p>${suksesMessage}</p>
+            `;
+      }
+    </script>
+  </body>
+</html>

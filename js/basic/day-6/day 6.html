@@ -21,12 +21,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
-      .your-box {
+      #your-box {
+        padding: 20px;
         background-color: rgba(4, 80, 4, 0.934);
         border: 1px solid lightgreen;
         color: white;
       }
-      .dealer-box {
+      #dealer-box {
+        padding: 20px;
         background-color: rgba(4, 80, 4, 0.934);
         border: 1px solid lightgreen;
         color: white;
@@ -71,7 +73,7 @@
         background: linear-gradient(
           90deg,
           rgba(5, 127, 224, 1) 19%,
-          rgba(0, 115, 177, 0.79) 45%,
+          rgb(16, 241, 189) 45%,
           rgba(7, 229, 223, 1) 64%
         );
       }
@@ -79,6 +81,11 @@
         width: 100%;
         display: flex;
         justify-content: center;
+      }
+      img {
+        width: 3.5rem;
+        height: 5rem;
+        margin-left: 5px;
       }
     </style>
   </head>
@@ -88,17 +95,17 @@
       <h2>Challange 5:blackJack</h2>
       <h3><span id="blackjack-result">Let's Play</span></h3>
       <div class="flex-blackjack-row-1">
-        <div class="your-box">
-          <h2>You: <span id="Your-blackjack-result">0</span></h2>
+        <div id="your-box">
+          <h2>You: <span id="your-blackjack-result">0</span></h2>
         </div>
-        <div class="dealer-box">
-          <h2>Dealer: <span id="delaer-blackjack-result">0</span></h2>
+        <div id="dealer-box">
+          <h2>Dealer: <span id="dealer-blackjack-result">0</span></h2>
         </div>
       </div>
 
       <div class="flex-blackjack-row-2">
         <div class="container-row">
-          <button class="hit">Hit</button>
+          <button class="hit" id="blackjack-hit-button">Hit</button>
           <button class="stand">Stand</button>
           <button class="deal">Deal</button>
         </div>
@@ -124,6 +131,213 @@
       cars.forEach((item, index, array) => {
         console.log(item, index);
       });*/
+
+      document
+        .getElementById("blackjack-hit-button")
+        .addEventListener("click", blackjackHit);
+      document.querySelector(".stand").addEventListener("click", dealerLogic);
+      document.querySelector(".deal").addEventListener("click", blackJackDeal);
+      let blackjackGame = {
+        you: {
+          scoreSpan: "#your-blackjack-result",
+          div: "#your-box",
+          score: 0,
+        },
+        dealer: {
+          scoreSpan: "#dealer-blackjack-result",
+          div: "#dealer-box",
+          score: 0,
+        },
+        cards: [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "K",
+          "J",
+          "Q",
+          "A",
+        ],
+        cardsMap: {
+          2: 2,
+          3: 3,
+          4: 4,
+          5: 5,
+          6: 6,
+          7: 7,
+          8: 8,
+          9: 9,
+          10: 10,
+          J: 10,
+          Q: 10,
+          K: 10,
+          A: [1, 11],
+        },
+        poinScore: {
+          win: 0,
+          lose: 0,
+          draw: 0,
+        },
+        istand: false,
+        hitClick: 0,
+        standClick: 0,
+      };
+
+      const you = blackjackGame["you"];
+      const dealer = blackjackGame["dealer"];
+      const hitSound = new Audio("sounds/swish.m4a");
+      const winSound = new Audio("sounds/cash.mp3");
+      const lossSound = new Audio("sounds/aww.mp3");
+
+      function blackjackHit() {
+        let card = RandomCards();
+        blackjackGame.hitClick++;
+        showCard(you, card);
+        updateScore(card, you);
+      }
+
+      function RandomCards() {
+        let random = Math.floor(Math.random() * blackjackGame["cards"].length);
+        return blackjackGame.cards[random];
+      }
+
+      function showCard(activePlayer, card) {
+        if (activePlayer.score <= 21) {
+          let cardImage = document.createElement("img");
+          cardImage.src = `image/${card}.png`;
+          document.querySelector(activePlayer["div"]).appendChild(cardImage);
+          hitSound.play();
+        }
+      }
+
+      function blackJackDeal() {
+        let yourImage = document
+          .querySelector("#your-box")
+          .querySelectorAll("img");
+
+        let dealerImage = document
+          .querySelector("#dealer-box")
+          .querySelectorAll("img");
+        for (i of yourImage) {
+          i.remove();
+        }
+
+        for (i of dealerImage) {
+          i.remove();
+        }
+        you.score = 0;
+        dealer.score = 0;
+        document.querySelector(you.scoreSpan).textContent = 0;
+        document.querySelector(you.scoreSpan).style.color = "white";
+        document.querySelector(dealer.scoreSpan).textContent = 0;
+        document.querySelector(dealer.scoreSpan).style.color = "white";
+        if (blackjackGame.istand == true) {
+          document.getElementById("blackjack-result").textContent =
+            "let' play again";
+          document.getElementById("blackjack-result").style.color = "black";
+          blackjackGame.istand = false;
+        }
+      }
+
+      function updateScore(card, activePlayer) {
+        if (card == "A") {
+          if ((activePlayer.score += 11 <= 21)) {
+            activePlayer.score += blackjackGame.cardsMap.A[1];
+          } else {
+            activePlayer.score += blackjackGame.cardsMap.A[0];
+          }
+        } else {
+          activePlayer.score += blackjackGame.cardsMap[card];
+        }
+        if (activePlayer.score > 21) {
+          document.querySelector(activePlayer.scoreSpan).textContent = "Bust!";
+          document.querySelector(activePlayer.scoreSpan).style.color = "red";
+        } else {
+          document.querySelector(activePlayer.scoreSpan).textContent =
+            activePlayer.score;
+        }
+      }
+
+      function dealerLogic() {
+        let card = RandomCards();
+        showCard(dealer, card);
+        updateScore(card, dealer);
+        blackjackGame.standClick++;
+        if (blackjackGame.standClick == blackjackGame.hitClick) {
+          blackjackGame.istand = true;
+          if (blackjackGame.istand) {
+            let winner = computerWinner();
+            showWinner(winner);
+            whoWinner(winner);
+          }
+        }
+        if (dealer.score > 15) {
+          showWinner(winner);
+          blackjackGame.istand = true;
+        }
+      }
+
+      function computerWinner() {
+        let winner;
+        if (you.score <= 21) {
+          if (you.score > dealer.score || dealer.score > 21) {
+            winner = you;
+            console.log("you won");
+          } else if (you.score < dealer.score) {
+            console.log("you Lost");
+            winner = dealer;
+          } else if (you.score == dealer.score) {
+            console.log("You draw");
+          }
+        } else if (you.score > 21 && dealer <= 21) {
+          winner = dealer;
+          console.log("you lost");
+        } else if (you.score > 21 && dealer.score > 21) {
+          console.log("you draw");
+        }
+        console.log(`winnes is ${winner}`);
+        return winner;
+      }
+
+      function showWinner(winner) {
+        let message, messageColor;
+        if (winner == you) {
+          message = "you Wont!";
+          messageColor = "green";
+          winSound.play();
+        } else if (winner == dealer) {
+          message = "You Lost";
+          messageColor = "red";
+          lossSound.play();
+        } else {
+          message = "draw";
+          messageColor = "black";
+        }
+        document.getElementById("blackjack-result").textContent = message;
+        document.getElementById("blackjack-result").style.color = messageColor;
+      }
+
+      function whoWinner(winner) {
+        if (winner == you) {
+          blackjackGame.poinScore.win += 1;
+        } else if (winner == dealer) {
+          blackjackGame.poinScore.lose += 1;
+          lossSound.play();
+        } else {
+          blackjackGame.poinScore.draw += 1;
+        }
+        document.getElementById("wins").textContent =
+          blackjackGame.poinScore.win;
+        document.getElementById("loses").textContent =
+          blackjackGame.poinScore.lose;
+        document.getElementById("draw").textContent =
+          blackjackGame.poinScore.draw;
+      }
     </script>
   </body>
 </html>
