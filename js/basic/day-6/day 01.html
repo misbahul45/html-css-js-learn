@@ -7,6 +7,7 @@
   </head>
   <body class="body">
     <button id="btn">Random Image</button>
+
     <script>
       /* const button = document.getElementById("btn");
       const img = document.createElement("img");
@@ -51,15 +52,30 @@
         }
       });
 
-      console.log(boxnama);*/
+      console.log(boxnama);
 
-      let originalString =
-        "This is the ayu-bagus-tahu example string ayu-bagus-tahu with some content.";
+      function persistence(num) {
+        //code me
+       let numStr=num.toString()
+       let numArray=numStr.split('')
+       let result=1
+       if(numStr.length===1){
+         result=0
+       }else{
+         for(let i=numArray.length-1;i>=0;i--){
+          let digit = parseInt(numStr[i]);
+          result *= digit;
+         }
+       }
+       return result
+     }
+     console.log('parse',persistence(34))
+*/
 
-      // Using the replace method to remove all occurrences of "ayu-bagus-tahu"
-      let modifiedString = originalString.replace(/ayu-bagus-tahu/g, "");
 
-      console.log(modifiedString);
+
+
+
     </script>
   </body>
 </html>

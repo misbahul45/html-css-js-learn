@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  body{
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    background-color: #0028efc8;
+    background-image: linear-gradient(90deg, #7300ff 0%, #b70071 100%);
+  }
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60rem;
+    height: 27rem;
+    padding: 25px;
+    background: linear-gradient(145deg,rgba(83, 255, 143, 0.185),rgba(40, 251, 255, 0.097));
+    backdrop-filter: blur(0.2rem);
+    display: flex;
+    flex-direction: column;
+    border-radius: 17px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.292),
+    -2px -2px 2px rgba(0, 0, 0, 0.292);
+  }
+  .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .top h1{
+    font-size: 25px;
+    text-transform: uppercase;
+    color: aqua;
+  }
+  .top div{
+    display: flex;
+    gap: 10px;
+    width: 120px;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgba(247, 254, 46, 0.803);
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.082);
+  }
+  .top div p{
+    font-size: 24px;
+    color: rgb(248, 0, 0);
+    font-weight: 520;
+  }
+  .bottom{
+    flex: 1;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding: 2px;
+  }
+  .bottom p{
+    font-size: 20px;
+    color: aliceblue;
+  }
+  .bottom .all-answer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(242, 242, 242);
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.194);
+  }
+  .all-answer .answer-btn{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap:10px;
+    color: aqua;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(251,251,251,0.2);
+    box-shadow: 4px 4px 4px #1111114a;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  .answer-btn:hover{
+    background-color: aqua;
+    color: darkblue;
+  }
+  .answer-btn:active{
+    background-color: aqua;
+    color: darkblue;
+    opacity: 0.8;
+    scale: 1.2;
+    box-shadow: 7px 7px 8px rgba(0, 0, 0, 0.803);
+  }
+  .h1-score{
+    color: aqua;
+    font-size: 5rem;
+    text-align: center;
+    text-shadow: 2px 2px 2px aliceblue;
+  }
+ 
+
+  

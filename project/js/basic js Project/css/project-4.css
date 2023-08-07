@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  body{
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+  }
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    background: linear-gradient(145deg,rgba(83, 255, 143, 0.185),rgba(40, 251, 255, 0.097));
+    backdrop-filter: blur(0.2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 14px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.292),
+    -2px -2px 2px rgba(0, 0, 0, 0.292);
+  }
+  .container h1{
+    text-transform: uppercase;
+    color: rgb(0, 242, 255);
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(247, 247, 247, 0.835);
+  }
+  .input-todo{
+    width: 100%;
+    display: flex;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-todo input{
+    outline: none;
+    border: none;
+    width: 10rem;
+    background-color: transparent;
+    border-bottom:2px solid cyan ;
+    padding: 8px 10px;
+    color: aliceblue;
+    font-weight: 560;
+    font-size: 14px;
+    transition: all 0.6s ease-in;
+  }
+  .input-todo input:focus{
+    width: 25rem;
+  }
+  .input-todo input::placeholder{
+    color: aliceblue;
+  }
+  .input-todo button{
+    padding: 10px 20px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient( 90.2deg,  rgba(79,255,255,1) 0.3%, rgba(0,213,255,1) 99.8% );
+    transition:all 0.5s ease-in-out;
+    box-shadow: 5px 5px 3px  rgba(0, 0, 0, 0.166);
+  }
+  .input-todo button:hover{
+    background:rgb(144, 0, 255);
+  }
+  .input-todo button i{
+    font-size: 25px;
+    color: rgb(144, 0, 255);
+    transition: all 0.51s ease-in-out;
+  }
+  .input-todo button:hover i{
+    color: #00DBDE;
+  }
+  .input-todo button:active i{
+    opacity: 0;
+  }
+  .task-content{
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.066),
+     -10px -10px 5px 5px rgba(0, 0, 0, 0.066);
+  }
+  .task-content .task{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 15px;
+    background-color: rgba(36, 248, 223, 0.815);
+    border-radius:10px ;
+    padding: 2px 10px;
+    position: relative;
+  }
+  .task i{
+    font-size:35px ;
+    color: darkblue;
+    font-weight: 650;
+    transition: all 0.5s;
+    }
+    .task #checklist{
+        cursor: pointer;
+
+    }
+   .task .task-input{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 25px;
+    font-weight: 500;
+   }
+   .task button{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: all 0.5s;
+    padding: 10px;
+    border-radius: 50%;
+   }
+   .task button:hover{
+    background-color: rgba(249, 13, 13, 0.662);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.235);
+   }
+   .task button:active{
+    opacity: 0.3;
+   }
+   .task button:hover i{
+    color: rgba(255, 255, 255, 0.814);
+   }
+   .click{
+    background-color: none;
+    width:25px;
+    height: 27px;
+   }
+   @media screen and (max-width: 700px) {
+    .task .task-input{
+        font-size: 12px;
+        margin-right: 12px;
+    }
+    .task i{
+        font-size: 15px;
+    }
+    .click{
+      background-color: none;
+      width:15px;
+      height: 17px;
+     }
+   }
+
+   .linetrough{
+    text-decoration: line-through;
+    font-style: italic;
+   }
+

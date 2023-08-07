@@ -1,0 +1,29 @@
+body{
+    min-height: 100vh;
+    background-color: red;
+}
+
+button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 26px 70px;
+    font-size: 70px;
+    color: red;
+    font-weight: 650;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow:  -7px 8px rgba(0, 0, 0, 0.224),6px 8px 7px rgba(12, 12, 12, 0.135);
+    transition: all 0.2s ease;
+    border: none;
+}
+button:hover
+{
+    background-color:rgba(40, 241, 9, 0.865);
+    color: whitesmoke;
+    box-shadow:  -10px 12px rgba(0, 0, 0, 0.224),8px 12px 9px rgba(12, 12, 12, 0.135);
+}
+button:active{
+    opacity: 0.9;
+}

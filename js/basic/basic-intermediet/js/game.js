@@ -32,3 +32,5 @@ function animate(){
     requestAnimationFrame(animate)
 }
 animate()
+
+console.log('halo')
