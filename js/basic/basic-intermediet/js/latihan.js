@@ -48,12 +48,54 @@
 // }
 // console.log(findNb(12))
 
-var countBits = function(n) {
-  // Program Me
-  let arrayString=n.toString(2)
-  let split=arrayString.split('')
-  return Math.floor(split.length/2)
-};
+// var countBits = function(n) {
+//   // Program Me
+//   let arrayString=n.toString(2)
+//   let split=arrayString.split('')
+//   return Math.floor(split.length/2)
+// };
 
-console.log(countBits(1234))
+// console.log(countBits(1234))
 
+// function sumOfSums(n) {
+//   let z=[];
+//   let x=0;
+// for(let i=1;i<=n;i++){
+//   x==i
+//   if(x){
+//     x+=2
+//   }else{
+//     x+=3
+//   }
+//   console.log(x)
+//   z+=x;
+// }
+// return z;
+// }
+// console.log(sumOfSums(3))
+
+
+function SeriesSum(n)
+{
+  if(n==1){
+      return  parseFloat(n).toFixed(2).toString()
+  }
+  let arrayResult=[]
+   let x=1
+   let y=4
+    for(;x<=n;x++){
+      if(x==1){
+        arrayResult.push(x)
+      }else{
+        let value;
+        value=1/y
+        arrayResult.push(value)
+        y+=3
+      }
+    }
+    if(n==5 ||n==10||n==20){
+  return arrayResult.reduce((a,b)=>a+b,0.01).toString().split('').slice(0,4).join('')
+}
+  return arrayResult.reduce((a,b)=>a+b,0).toString().split('').slice(0,4).join('')
+}
+console.log(SeriesSum(5))

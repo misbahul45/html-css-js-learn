@@ -162,5 +162,6 @@
    .linetrough{
     text-decoration: line-through;
     font-style: italic;
+    margin-left: 10px;
    }
 

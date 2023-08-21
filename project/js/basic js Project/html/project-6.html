@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/project-6.css">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <form action="" name="formFill" onsubmit="return validation()">
+                <h2>Register</h2>
+                <div class="input-box">
+                    <i class="material-icons">person</i>
+                    <input type="text" name="userName"  placeholder="UserName" autocomplete="off">
+                    <p id="userText"></p>
+                </div>
+                <div class="input-box">
+                    <i class="material-icons">email</i>
+                    <input type="email" name="email" placeholder="Email User" autocomplete="off">
+                    <p id="emailText"></p>
+                </div>
+                <div class="input-box">
+                    <i class="material-icons" id="showPw">no_encryption</i>
+                    <input type="password" name="password" placeholder="Password" autocomplete="off">
+                    <p id="pwText"></p>
+                </div>
+                <div class="input-box">
+                    <i class="material-icons" id="showPw2">no_encryption</i>
+                    <input type="password" name="cPassword" placeholder="Confirm Password" autocomplete="off" >
+                    <p id="cmpwText"></p>
+                </div>
+                <div class="button">
+                    <input type="submit" class="btn" value="Register">
+                </div>
+                
+                <div class="group">
+                    <span><a href="#">Forget Password</a></span>
+                    <span><a href="">Login</a></span>
+                </div>
+            </form>
+
+            <script src="../javascript/project-6.js"></script>
+        </div>
+    </div>
+    
+</body>
+</html>

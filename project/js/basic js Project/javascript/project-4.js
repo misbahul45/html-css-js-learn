@@ -23,10 +23,21 @@ function outputTodoList(){
             task.remove()
         }
         task.querySelector('.click').addEventListener('click',remove2)
-
+        let isClick=false
         function remove2(){
-            task.querySelector('.click').style.background='darkblue'
+            if(isClick==false){
+            const checklistIcon = task.querySelector('.click i');
+            checklistIcon.classList.remove('fa-square-o');
+            checklistIcon.classList.add('fa-check-square');
             task.querySelector('.task-input').classList.add('linetrough')
+            isClick=true
+            }else{
+            const checklistIcon = task.querySelector('.click i');
+            checklistIcon.classList.remove('fa-check-square')
+            checklistIcon.classList.add('fa-square-o')
+            task.querySelector('.task-input').classList.remove('linetrough')
+            isClick=false
+            }
         }
     }
 

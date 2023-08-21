@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* const MyObj={
+            name:"dave",
+            logName:()=>{
+                console.log(this.name)
+            }
+        }
+        const myArray=["eat","sleep","code"]
+        sessionStorage.setItem("mystore",JSON.stringify(MyObj))
+        const mySesiondata=JSON.parse(sessionStorage.getItem("mystore"));
+        console.log(mySesiondata)
+        console.log()*/
+
+        //lokalstorage
+        const MyObj={
+            name:"dave",
+            logName:()=>{
+                console.log(this.name)
+            }
+        }
+        const myArray=["eat","sleep","code"]
+        localStorage.setItem("mystore",JSON.stringify(MyObj))
+        const mySesiondata=JSON.parse(localStorage.getItem("mystore"));
+        localStorage.removeItem("mystore")//remove setiap elemen
+        localStorage.clear()// menghapus semua
+        console.log(mySesiondata)
+    </script>
+</body>
+</html>

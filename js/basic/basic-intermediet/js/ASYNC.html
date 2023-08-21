@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <h1 id="response"></h1>
+    <!-- <form>
+        <label for="search">Search:
+            <input type="text" id="search" name="search">
+        </label>
+        <label for="search">filter:
+            <input type="text" id="filter" name="filter">
+        </label>
+        <input type="button" id="login" value="search">
+    </form> -->
+
+    <!-- <form>
+        <label for="userName">userName:
+            <input type="text" id="username" name="username">
+        </label>
+        <label for="password">password:
+            <input type="text" id="password" name="password">
+        </label>
+        <input type="button" id="login" value="search">
+    </form> -->
+
+<!-- 
+    <form>
+        <label for="userName">userName:
+            <input type="text" id="username" name="username">
+        </label>
+        <label for="name">name:
+            <input type="text" id="name" name="name">
+        </label>
+        <label for="profile">
+            <input type="file" name="profile" id="profile">
+        </label>
+        <input type="button" id="register" value="register">
+    </form> -->
+    <table>
+        <tbody>
+            <tr>
+                <td>Id :</td>
+                <td id="id"></td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td id="name"></td>
+            </tr>
+            <tr>
+                <td>Price :</td>
+                <td id="price"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <input type="text" id="username">
+    <input type="password" name="" id="password">
+    <button id="click">click</button>
+    <script>
+
+        /*function latihanTimeOut(){
+            const h1=document.createElement('h1')
+            h1.textContent='ASNC Learning'
+            document.querySelector('body').appendChild(h1)
+        }
+        setTimeout(latihanTimeOut,1000)
+
+
+    //ajax
+        const ajax=new XMLHttpRequest()
+        ajax.open('GET','api/hello.json')
+            ajax.onreadystatechange=()=>{
+                console.log(`ready state change ${ajax.readyState}`)
+            }
+
+        //ajax.open('GET','api/salah.json')
+        ajax.addEventListener('load',function(){
+            if(ajax.status==200){
+                const json=JSON.parse(ajax.responseText)
+                console.log(json.response)
+            }else{
+                console.log('Kesalahan status',ajax.status)
+            }
+        })
+
+        ajax.send()
+
+        function doLogin(){
+            const ajax=new XMLHttpRequest()
+            ajax.open('POST',"https://eoszyrgwc2shslv.m.pipedream.net")
+            ajax.onload=()=>{
+                const response=document.getElementById('response')
+                response.innerText=ajax.responseText
+            }
+            ajax.setRequestHeader('content-type','application/json')
+            const json={
+                userName:document.getElementById('userName').value,
+                password:document.getElementById('password').value,
+            }
+            ajax.send(JSON.stringify(json))
+        }
+        function doSearch(){
+            const ajax=new XMLHttpRequest()
+
+            const param=new URLSearchParams();
+            param.append('search',document.getElementById('search').value)
+            param.append('filter',document.getElementById('filter').value)
+            ajax.open('GET',`https://eoszyrgwc2shslv.m.pipedream.net?${param.toString()}`)
+            ajax.onload=()=>{
+                const response=document.getElementById('response')
+                response.innerText=ajax.status
+            }
+        
+            ajax.send()
+        }
+        document.getElementById('login').onclick=doSearch
+        function doLogin() {
+            const ajax = new XMLHttpRequest();
+            ajax.open("POST", "https://eoszyrgwc2shslv.m.pipedream.net");
+            ajax.onload = function () {
+                const response = document.getElementById("response");
+                console.log(response)
+            }
+            ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+            const form = new URLSearchParams();
+            form.append("username", document.getElementById("username").value);
+            form.append("password", document.getElementById("password").value);
+    
+            ajax.send(form);
+        }
+    
+        //document.getElementById("login").onclick = doLogin;
+
+//upload file dengan ajax
+
+        function uploadFile(){
+            const ajax=new XMLHttpRequest();
+            ajax.open("POST", "https://eoszyrgwc2shslv.m.pipedream.net");
+            ajax.onload = function () {
+                console.log(ajax.responseText)
+            }
+            const form=new FormData()
+            form.append("username",document.getElementById("username"))
+            form.append("name",document.getElementById("name"))
+
+            const files=document.getElementById('profile').files;
+            const firstFile=files[0]
+            form.append("profile",firstFile)
+            ajax.send(form)
+        }
+        document.getElementById("register").onclick=uploadFile
+            
+
+        // promise
+        const promise=new Promise(function(resolve,reject){
+            resolve("sukses")
+            reject("eror")
+        })
+        
+        const promise=new Promise((resolve,rejected)=>{
+            const ajax=new XMLHttpRequest()
+            ajax.open("GET","api/product.json")
+            ajax.onload=()=>{
+                if(ajax.status==200){
+                    resolve(ajax.responseText)
+                }else{
+                    rejected("eror get product with response",ajax.responseText)
+                }
+            }
+            ajax.send()
+        })
+        console.log(promise)
+       
+        function getProduct(product){
+            return new Promise((resolve,rejected)=>{
+                const ajax=new XMLHttpRequest()
+                ajax.open("GET",`api/${product}.json`)
+                ajax.onload=()=>{
+                    if(ajax.status==200){
+                        resolve(ajax.responseText)
+                    }else{
+                        rejected("eror get product with response",ajax.status)
+                    }
+                }
+                ajax.send()  
+            })
+        }
+
+        getProduct("product")
+        .then(function(response){
+          const json=JSON.parse(response)
+          document.getElementById("id").textContent = json.id;
+          document.getElementById("name").textContent = json.name;
+          document.getElementById("price").textContent = json.price;
+        })
+        .catch(function(eror){
+          document.getElementById("id").textContent = eror;
+          document.getElementById("name").textContent = eror;
+          document.getElementById("price").textContent = eror;
+        })
+        .finally(() => {
+          console.log("finally");
+        });
+
+         function getProductAll(product){
+            return new Promise((resolve,rejected)=>{
+                const ajax=new XMLHttpRequest()
+                ajax.open("Get",`api/${product}.json`)
+                ajax.onload=()=>{
+                    if(ajax.status==200){
+                        resolve(ajax.responseText)
+                    }else{
+                        rejected("eror with status",ajax.status)
+                    }
+                }
+                ajax.send()
+            })
+         }
+         //const promise=Promise.all([getProductAll("product"),getProductAll("product2"),getProductAll("product3")])//ini semua
+         const promise=Promise.any([getProductAll("product"),getProductAll("product2"),getProductAll("product3")])//ini salah satu yang paling cepat
+         promise.then((product)=>{
+            console.log(product)
+         })
+     function fecthApi(){
+        const request=new Request("https://eoszyrgwc2shslv.m.pipedream.net",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Accept":"application/json",
+            },
+            body:JSON.stringify({
+                username:document.getElementById("username").value,
+                password:document.getElementById("password").value
+            })
+        })
+        const response=fetch(request)
+        response
+        .then((response)=>response.json())
+        .then(json=>console.log(json.password))
+     } 
+     document.getElementById("click").onclick=fecthApi
+        
+    
+    //async function
+
+    function getNameManual(){
+        return new Promise((resolve,rejected)=>{
+            resolve("misbahul")
+        })
+    }
+    getNameManual().then((name)=>console.log(name))
+
+    async function getNameASYNC(){
+        return "Misbahul ASYNC"
+    }
+
+    getNameASYNC().then((name)=>console.log(name))
+         */
+
+
+         function getProduct(){
+            const request=new Request("api/product.json",{
+                method:"GET"
+            })
+            const response= fetch(request)
+
+            return response.then((response)=>response.json())
+         }
+
+         function getProductNamePromise(){
+            return new Promise((resolve,project)=>{
+                getProduct()
+                    .then(product=>resolve(product.name))
+                    .catch((eror)=>reject(eror))
+            })
+         }
+         getProductNamePromise()
+         .then(productName=>console.log(productName))
+
+         async function getProductASYNC(){
+           try{
+            const product=await getProduct()
+            return product.name
+           }catch(e){
+                console.log(`product not foud`)
+           }
+         }
+         getProductASYNC()
+         .then((productName)=>console.log(productName))
+    </script>
+</body>
+</html>
