@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+        .weather-container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            height: 400px;
+            width: 300px;
+            background-color: blueviolet;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .weather-container h1{
+            color: whitesmoke;
+        }
+        .weather-container .input-city{
+            width: 90%;
+            display: flex;
+            gap: 20px;
+        }
+        .input-city input{
+            flex: 4;
+        }
+        .input-city button{
+            flex: 1;
+            cursor: pointer;
+        }
+        p{
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <div class="input-city">
+            <input type="text" placeholder="Search City">
+            <button>Search</button>
+        </div>
+        <div class="display">
+           <h1 id="city"></h1>
+           <p id="temp"></p>
+           <p id="min-temp"></p>
+           <p id="humidity"></p>
+        </div>
+    </div>
+    
+    <script src="../js/async.js"></script>
+</body>
+</html>

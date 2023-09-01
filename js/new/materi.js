@@ -169,9 +169,10 @@
 //     console.log("hello misbahul ",i)
 // }
 
-let i=1
-while(i<=5){
+// let i=1
+// while(i<=5){
 //     console.log("hello word",i)
 //     i++;
 // }
+//=>data
 
